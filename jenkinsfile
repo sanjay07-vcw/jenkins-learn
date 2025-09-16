@@ -20,27 +20,31 @@ pipeline {
             }
         }
     }
-}
-pipeline {
-    agent any
 
-    stages {
-        stage('Build') {
-            steps {
-                sh 'go build -o myapp main.go'
-            }
+    post {
+        success {
+            emailext(
+                to: 'karthikeyanvelu777@gmail.com',
+                subject: "✅ JOB SUCCESS",
+                body: """Hello Karthikeyan,
+
+
+Regards,  
+Jenkins
+"""
+            )
         }
 
-        stage('Test') {
-            steps {
-                sh 'go test ./...'
-            }
-        }
+        failure {
+            emailext(
+                to: 'karthikeyanvelu777@gmail.com',
+                subject: "❌ JOB FAILED",
+                body: """Hello Karthikeyan,
 
-        stage('Deploy') {
-            steps {
-                echo 'Deploying Go app...'
-            }
+Regards,  
+Jenkins
+"""
+            )
         }
     }
 }
