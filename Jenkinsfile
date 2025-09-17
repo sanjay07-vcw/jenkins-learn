@@ -7,7 +7,7 @@ pipeline {
                 sh 'go build -o myapp main.go'
             }
         }
-
+// 
         stage('Test') {
             steps {
                 sh 'go test ./...'
