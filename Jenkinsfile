@@ -8,6 +8,11 @@ pipeline {
     }
 
     stages {
+            stage('Check Go') {
+            steps {
+                sh 'go version || echo "Go is NOT installed on this Jenkins server"'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'go build -o myapp main.go'
