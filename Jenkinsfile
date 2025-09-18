@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    tools {
+        go 'Go-1.20.5' // This name must match a Go installation configured in Jenkins
+    }
     environment {
         EMAIL_RECIPIENT = 'karthikeyanvelu777@gmail.com'
     }
@@ -34,7 +36,7 @@ pipeline {
 
 Your Jenkins job completed successfully. 🎉
 
-Regards,  
+Regards,
 Jenkins
 '''
             )
@@ -46,10 +48,10 @@ Jenkins
                 subject: '❌ JOB FAILED',
                 body: '''Hello Karthikeyan,
 
-Your Jenkins job has failed. ❌  
-Please check the build logs for details.  
+Your Jenkins job has failed. ❌
+Please check the build logs for details.
 
-Regards,  
+Regards,
 Jenkins
 '''
             )
