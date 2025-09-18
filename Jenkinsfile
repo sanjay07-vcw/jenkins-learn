@@ -1,13 +1,17 @@
 pipeline {
     agent any
 
+    tools {
+        go 'Golang 1.20.5'
+    }
+
     stages {
         stage('Build') {
             steps {
                 sh 'go build -o myapp main.go'
             }
         }
-// 
+
         stage('Test') {
             steps {
                 sh 'go test ./...'
@@ -26,12 +30,13 @@ pipeline {
             emailext(
                 to: 'karthikeyanvelu777@gmail.com',
                 subject: "✅ JOB SUCCESS",
-                body: """Hello Karthikeyan,
+                body: '''Hello Karthikeyan,
 
+Your Jenkins job completed successfully. 🎉
 
-Regards,  
+Regards,
 Jenkins
-"""
+'''
             )
         }
 
@@ -39,12 +44,18 @@ Jenkins
             emailext(
                 to: 'karthikeyanvelu777@gmail.com',
                 subject: "❌ JOB FAILED",
-                body: """Hello Karthikeyan,
+                body: '''Hello Karthikeyan,
 
-Regards,  
+Your Jenkins job has failed. Please check the logs. ❌
+
+Regards,
 Jenkins
-"""
+'''
             )
+        }
+
+        always {
+            echo 'Pipeline finished.'
         }
     }
 }
