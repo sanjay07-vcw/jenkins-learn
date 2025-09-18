@@ -1,7 +1,7 @@
 pipeline {
-       agent any
+    agent any
     tools {
-        go 'Golang'
+        go 'Golang'  // go = tool type, Golang = name in Global Tool Configuration
     }
 
     environment {
@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh 'go version || echo "Go is NOT installed on this Jenkins server"'
             }
-        }
+            }
         stage('Build') {
             steps {
                 sh 'go build -o myapp main.go'
