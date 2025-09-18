@@ -1,8 +1,8 @@
 pipeline {
     agent any
 
-    tools {
-        go 'Golang 1.20.5'
+    environment {
+        EMAIL_RECIPIENT = 'karthikeyanvelu777@gmail.com'
     }
 
     stages {
@@ -28,13 +28,13 @@ pipeline {
     post {
         success {
             emailext(
-                to: 'karthikeyanvelu777@gmail.com',
-                subject: "✅ JOB SUCCESS",
+                to: "${EMAIL_RECIPIENT}",
+                subject: '✅ JOB SUCCESS',
                 body: '''Hello Karthikeyan,
 
 Your Jenkins job completed successfully. 🎉
 
-Regards,
+Regards,  
 Jenkins
 '''
             )
@@ -42,13 +42,14 @@ Jenkins
 
         failure {
             emailext(
-                to: 'karthikeyanvelu777@gmail.com',
-                subject: "❌ JOB FAILED",
+                to: "${EMAIL_RECIPIENT}",
+                subject: '❌ JOB FAILED',
                 body: '''Hello Karthikeyan,
 
-Your Jenkins job has failed. Please check the logs. ❌
+Your Jenkins job has failed. ❌  
+Please check the build logs for details.  
 
-Regards,
+Regards,  
 Jenkins
 '''
             )
