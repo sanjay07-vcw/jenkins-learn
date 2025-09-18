@@ -1,9 +1,6 @@
 pipeline {
-    agent {
-        docker {
-            image 'golang:1.23'
-         }
-    }
+       agent any
+
     environment {
         EMAIL_RECIPIENT = 'karthikeyanvelu777@gmail.com'
     }
