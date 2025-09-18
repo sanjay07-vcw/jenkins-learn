@@ -1,5 +1,8 @@
 pipeline {
        agent any
+    tools {
+        go 'Go-1.20.5'
+    }
 
     environment {
         EMAIL_RECIPIENT = 'karthikeyanvelu777@gmail.com'
