@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'Golang'  // go = tool type, Golang = name in Global Tool Configuration
+        go 'Golang'  // go = tool type, Golang = name in Global Tool Configuration
     }
 
     environment {
