@@ -7,5 +7,4 @@ func TestAdd(t *testing.T) {
 	if result != 5 {
 		t.Errorf("Expected 5, got %d", result)
 	}
-	//
 }
