@@ -16,7 +16,9 @@ pipeline {
             }
         stage('Build') {
             steps {
-                sh 'go build -o myapp ./main.go'
+                dir('test') {
+                    sh 'go build -o ../myapp ./...'
+                }
             }
         }
 
