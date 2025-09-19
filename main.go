@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
-
 func main() {
-	fmt.Println("Hello docker !...")
+	Add(2, 3)
+
+}
+
+func Add(a, b int) {
+	var c = a + b
+	println(c)
 }
